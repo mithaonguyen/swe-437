@@ -3,10 +3,12 @@
     Converts various measures from one unit to another
 
     @author Jeff Offutt & Ren Li
+    @author 3.0 - Mimi Nguyen
 
         @version 1.0    October 2000
         @version 2.0    June 2015
         @version 2.1    January 2020
+        @version 3.0    February 2026
 ********************************************************************* */
 
 // Import Java Libraries
@@ -53,7 +55,7 @@ public class conversion {
         return (num2);
     }
 
-    private float convertC2F(String CAsStr) { // Convert celsius to farenheit
+    private float convertC2F(String CAsStr) { // Convert celsius to fahrenheit
         float num1, num2; // temporary variables
         int n; // temporary variable
         // Round to 2 digits past decimal
@@ -255,6 +257,120 @@ public class conversion {
     }
 
     public static void main(String[] args) {
-        
+        boolean isRunning = true;
+        Scanner input = new Scanner(System.in);
+
+        while (isRunning) {
+            System.out.println("\nUnit Conversion Program");
+
+            System.out.println("\n[0] Exit");
+            System.out.println("[1] Fahrenheit to Celsius");
+            System.out.println("[2] Celsius to Fahrenheit");
+            System.out.println("[3] Inches to Centimeters");
+            System.out.println("[4] Centimeters to Inches");
+            System.out.println("[5] Feet to Meters");
+            System.out.println("[6] Meters to Feet");
+            System.out.println("[7] Miles to Kilometers");
+            System.out.println("[8] Kilometers to Miles");
+            System.out.println("[9] Gallons to Liters");
+            System.out.println("[10] Liters to Gallons");
+            System.out.println("[11] Ounces to Grams");
+            System.out.println("[12] Grams to Ounces");
+            System.out.println("[13] Pounds to Kilograms");
+            System.out.println("[14] Kilograms to Pounds");
+
+            System.out.print("\nEnter a digit [1-14] or [0] to exit: ");
+
+            if (!input.hasNextInt()) {
+                System.out.println("\nInvalid input, try again.");
+                input.nextLine();
+                continue;
+            }
+            int choice = input.nextInt();
+            input.nextLine();
+
+            if (choice == 0) {
+                isRunning = false;
+                System.out.println("\nExiting program...");
+                System.out.println();
+            } else {
+                System.out.print("\nEnter value to convert: ");
+                String value = input.nextLine();
+
+                float num;
+                try {
+                    num = Float.parseFloat(value);
+                } catch (NumberFormatException e) {
+                    System.out.println("\nInvalid input, try again.");
+                    continue;
+                }
+
+                conversion convert = new conversion();
+                float result = 0;
+
+                switch (choice) {
+                    case 1:
+                        result = convert.convertF2C(value);
+                        System.out.printf("%.2f Fahrenheit = %.2f Celsius\n", num, result);
+                        break;
+                    case 2:
+                        result = convert.convertC2F(value);
+                        System.out.printf("%.2f Celsius = %.2f Fahrenheit\n", num, result);
+                        break;
+                    case 3:
+                        result = convert.convertIn2Cm(value);
+                        System.out.printf("%.2f Inches = %.2f Centimeters\n", num, result);
+                        break;
+                    case 4:
+                        result = convert.convertCm2In(value);
+                        System.out.printf("%.2f Centimeters = %.2f Inches\n", num, result);
+                        break;
+                    case 5:
+                        result = convert.convertF2M(value);
+                        System.out.printf("%.2f Feet = %.2f Meters\n", num, result);
+                        break;
+                    case 6:
+                        result = convert.convertM2F(value);
+                        System.out.printf("%.2f Meters = %.2f Feet\n", num, result);
+                        break;
+                    case 7:
+                        result = convert.convertM2K(value);
+                        System.out.printf("%.2f Miles = %.2f Kilometers\n", num, result);
+                        break;
+                    case 8:
+                        result = convert.convertK2M(value);
+                        System.out.printf("%.2f Kilometers = %.2f Miles\n", num, result);
+                        break;
+                    case 9:
+                        result = convert.convertG2L(value);
+                        System.out.printf("%.2f Gallons = %.2f Liters\n", num, result);
+                        break;
+                    case 10:
+                        result = convert.convertL2G(value);
+                        System.out.printf("%.2f Liters = %.2f Gallons\n", num, result);
+                        break;
+                    case 11:
+                        result = convert.convertOz2G(value);
+                        System.out.printf("%.2f Ounces = %.2f Grams\n", num, result);
+                        break;
+                    case 12:
+                        result = convert.convertG2Oz(value);
+                        System.out.printf("%.2f Grams = %.2f Ounces\n", num, result);
+                        break;
+                    case 13:
+                        result = convert.convertLb2K(value);
+                        System.out.printf("%.2f Pounds = %.2f Kilograms\n", num, result);
+                        break;
+                    case 14:
+                        result = convert.convertK2Lb(value);
+                        System.out.printf("%.2f Kilograms = %.2f Pounds\n", num, result);
+                        break;
+                    default:
+                        System.out.println("\nInvalid input, try again.");
+                        continue;
+                }
+            }
+        }
+        input.close();
     }
 }
