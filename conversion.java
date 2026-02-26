@@ -12,9 +12,7 @@
 ********************************************************************* */
 
 // Import Java Libraries
-import java.io.*;
 import java.util.*;
-import java.lang.*;
 
 // conversion class
 //
@@ -42,78 +40,78 @@ public class conversion {
 
     private int precision = 2;
 
-    private double round(double num) {
+    public double round(double num) {
         double scale = Math.pow(10, precision);
         return Math.round(num * scale) / scale;
     }
 
-    private double convertF2C(double f) { // Convert farenheit to celsius
+    public double convertF2C(double f) { // Convert farenheit to celsius
         return round((f - 32.0) * (5.0 / 9.0));
     }
 
-    private double convertC2F(double c) { // Convert celsius to fahrenheit
+    public double convertC2F(double c) { // Convert celsius to fahrenheit
         return round((c * 9.0 / 5.0) + 32.0);
     }
 
     // small distance
-    private double convertIn2Cm(double in) { // Convert inches to centimeters
+    public double convertIn2Cm(double in) { // Convert inches to centimeters
         return round(in * 2.54);
     }
 
-    private double convertCm2In(double cm) { // Convert centimeters to inches
+    public double convertCm2In(double cm) { // Convert centimeters to inches
         return round(cm * 0.3937);
     }
 
     // medium distance
-    private double convertF2M(double ft) { // Convert feet to meters
+    public double convertF2M(double ft) { // Convert feet to meters
         return round(ft * 0.3048);
     }
 
-    private double convertM2F(double m) { // Convert meters to feet
+    public double convertM2F(double m) { // Convert meters to feet
         return round(m / 0.3048);
     }
 
     // large distance
-    private double convertM2K(double mi) { // Convert miles to kilometers
+    public double convertM2K(double mi) { // Convert miles to kilometers
         return round(mi * 1.609);
     }
 
-    private double convertK2M(double km) { // Convert kilometers to miles
+    public double convertK2M(double km) { // Convert kilometers to miles
         return round(km * 0.6214);
     }
 
     // volume
-    private double convertG2L(double gal) { // Convert gallons to liters
+    public double convertG2L(double gal) { // Convert gallons to liters
         return round(gal * 3.785);
     }
 
-    private double convertL2G(double L) { // Convert liters to gallons
+    public double convertL2G(double L) { // Convert liters to gallons
         return round(L / 3.785);
     }
 
     // small weight
-    private double convertOz2G(double oz) { // Convert ounces to grams
+    public double convertOz2G(double oz) { // Convert ounces to grams
         return round(oz * 28.3495);
     }
 
-    private double convertG2Oz(double g) { // Convert grams to ounces
+    public double convertG2Oz(double g) { // Convert grams to ounces
         return round(g / 28.3495);
     }
 
     // medium weight
-    private double convertLb2K(double lb) { // Convert pounds to kilograms
+    public double convertLb2K(double lb) { // Convert pounds to kilograms
         return round(lb * 0.4536);
     }
 
-    private double convertK2Lb(double kg) { // Convert kilograms to pounds
+    public double convertK2Lb(double kg) { // Convert kilograms to pounds
         return round(kg / 0.4536);
     }
 
-    private double convertH2S(double val) { // Convert hours to seconds
+    public double convertH2S(double val) { // Convert hours to seconds
         return round(val * 3600.0);
     }
 
-    private double convertS2H(double val) { // Convert seconds to hours
+    public double convertS2H(double val) { // Convert seconds to hours
         return round(val / 3600.0);
     }
 
